@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sorteador de Números</title>
+
+  
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app">
+
+        
+        <aside class="info">
+            <header class="logo-area">
+                <div class="logo">NUMBERS</div>
+            </header>
+
+            <section class="hero">
+                <p class="tagline">ONLINE - GRATUITO</p>
+                <h1>Sorteador de Números</h1>
+            </section>
+
+            <section class="faq">
+                <article class="faq-item">
+                    <h2>Como funciona o sorteador de números?</h2>
+                    <p>
+                        O sorteador utiliza um algoritmo de geração aleatória para criar
+                        números dentro do intervalo especificado pelo usuário.
+                    </p>
+                </article>
+
+                <article class="faq-item">
+                    <h2>Posso escolher o intervalo dos números?</h2>
+                    <p>
+                        Sim, você pode definir os valores mínimo e máximo para o intervalo
+                        dos números sorteados.
+                    </p>
+                </article>
+            </section>
+        </aside>
+
+      
+        <main class="painel">
+
+            
+            <section class="tela-formulario" id="tela-formulario">
+                <header class="painel-header">
+                    <h2>Quero sortear:</h2>
+                    <p>
+                        Defina o intervalo e a quantidade de números, clique em "Sortear"
+                        e veja os resultados na tela.
+                    </p>
+                </header>
+
+                <form class="form-sorteio" id="form-sorteio">
+                    <div class="grupo-campos">
+                        <div class="campo">
+                            <label for="input-quantidade">Números</label>
+                            <input type="number" id="input-quantidade" min="1" placeholder="2" />
+                        </div>
+
+                        <div class="campo">
+                            <label for="input-minimo">De</label>
+                            <input type="number" id="input-minimo" placeholder="1" />
+                        </div>
+
+                        <div class="campo">
+                            <label for="input-maximo">De</label>
+                            <input type="number" id="input-maximo" placeholder="100" />
+                        </div>
+                    </div>
+
+                    <div class="opcao-sem-repeticao">
+                        <input type="checkbox" id="input-sem-repeticao" />
+                        <label for="input-sem-repeticao">Não repetir número</label>
+                    </div>
+
+                    <p class="mensagem-erro" id="mensagem-erro"></p>
+
+                    <button type="button" id="btn-sortear">
+                        Sortear
+                    </button>
+                </form>
+            </section>
+
+            <!-- TELA 2: RESULTADO -->
+            <section class="tela-resultado hidden" id="tela-resultado">
+                <header class="resultado-header">
+                    <h2>Resultado do sorteio</h2>
+                    <p>1º resultado</p>
+                </header>
+
+                <div class="resultado-numeros" id="resultado-numeros">
+                    
+                </div>
+
+                <button type="button" id="btn-sortear-novamente">
+                    Sortear novamente
+                </button>
+            </section>
+
+        </main>
+    </div>
+
+   
+    <script src="scripts.js"></script>
+</body>
+
+</html>
