@@ -1,113 +1,97 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sorteador de Números</title>
-
-  
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <title>Sorteador de Números</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <div class="app">
+  <div class="app">
+    <aside class="lado-esquerdo">
+      <header class="topo">
+        <img src="/rocketseat/sorteador/assets/logo.png" alt="Logo Numbers" class="logo">
+      </header>
 
-        
-        <aside class="info">
-            <header class="logo-area">
-                <div class="logo">NUMBERS</div>
-            </header>
+      <section class="texto-principal">
+        <p class="tag">Online - gratuito</p>
+        <h1>Sorteador de números</h1>
+      </section>
 
-            <section class="hero">
-                <p class="tagline">ONLINE - GRATUITO</p>
-                <h1>Sorteador de Números</h1>
-            </section>
+      <section class="perguntas">
+        <article class="pergunta">
+          <h2>Como funciona o sorteador de números?</h2>
+          <p>O sorteador utiliza um algoritmo de geração aleatória para criar números dentro do intervalo especificado pelo usuário.</p>
+        </article>
 
-            <section class="faq">
-                <article class="faq-item">
-                    <h2>Como funciona o sorteador de números?</h2>
-                    <p>
-                        O sorteador utiliza um algoritmo de geração aleatória para criar
-                        números dentro do intervalo especificado pelo usuário.
-                    </p>
-                </article>
+        <article class="pergunta">
+          <h2>Posso escolher o intervalo dos números?</h2>
+          <p>Sim, você pode definir os valores mínimo e máximo para o intervalo dos números sorteados.</p>
+        </article>
+      </section>
+    </aside>
 
-                <article class="faq-item">
-                    <h2>Posso escolher o intervalo dos números?</h2>
-                    <p>
-                        Sim, você pode definir os valores mínimo e máximo para o intervalo
-                        dos números sorteados.
-                    </p>
-                </article>
-            </section>
-        </aside>
+    <main class="lado-direito">
+      <!-- TELA FORMULÁRIO -->
+      <section class="painel" id="tela-formulario">
+        <h2 class="painel-titulo">Quero sortear:</h2>
+        <p class="painel-subtitulo">
+          Defina o intervalo e a quantidade de números, clique em "Sortear" e veja os resultados na tela. É rápido e fácil!
+        </p>
 
-      
-        <main class="painel">
+        <div class="linha-labels">
+          <label for="input-quantidade">Números</label>
+          <label for="input-minimo">De</label>
+          <label for="input-maximo">Até</label>
+        </div>
 
-            
-            <section class="tela-formulario" id="tela-formulario">
-                <header class="painel-header">
-                    <h2>Quero sortear:</h2>
-                    <p>
-                        Defina o intervalo e a quantidade de números, clique em "Sortear"
-                        e veja os resultados na tela.
-                    </p>
-                </header>
+        <div class="linha-inputs">
+          <input type="number" id="input-quantidade" min="1" value="2">
+          <input type="number" id="input-minimo" value="1">
+          <input type="number" id="input-maximo" value="100">
+        </div>
 
-                <form class="form-sorteio" id="form-sorteio">
-                    <div class="grupo-campos">
-                        <div class="campo">
-                            <label for="input-quantidade">Números</label>
-                            <input type="number" id="input-quantidade" min="1" placeholder="2" />
-                        </div>
+        <label class="toggle">
+          <input type="checkbox" id="input-sem-repeticao">
+          <span class="toggle-trilho">
+            <span class="toggle-bola"></span>
+          </span>
+          <span class="toggle-texto">Não repetir número</span>
+        </label>
 
-                        <div class="campo">
-                            <label for="input-minimo">De</label>
-                            <input type="number" id="input-minimo" placeholder="1" />
-                        </div>
+        <p id="mensagem-erro" class="mensagem-erro" aria-live="assertive"></p>
 
-                        <div class="campo">
-                            <label for="input-maximo">De</label>
-                            <input type="number" id="input-maximo" placeholder="100" />
-                        </div>
-                    </div>
+        <button id="btn-sortear" class="botao-principal" type="button">
+          <span>Sortear</span>
+          <span class="icone-seta">→</span>
+        </button>
+      </section>
 
-                    <div class="opcao-sem-repeticao">
-                        <input type="checkbox" id="input-sem-repeticao" />
-                        <label for="input-sem-repeticao">Não repetir número</label>
-                    </div>
+      <!-- TELA RESULTADO -->
+      <section class="painel hidden" id="tela-resultado">
+        <h2 class="painel-titulo">Resultado do sorteio</h2>
+        <p class="painel-subtitulo pequeno">1º resultado</p>
 
-                    <p class="mensagem-erro" id="mensagem-erro"></p>
+        <div class="resultado-numeros" id="resultado-numeros" aria-live="polite"></div>
 
-                    <button type="button" id="btn-sortear">
-                        Sortear
-                    </button>
-                </form>
-            </section>
+        <p id="mensagem-status" class="mensagem-status" aria-live="polite"></p>
 
-            <!-- TELA 2: RESULTADO -->
-            <section class="tela-resultado hidden" id="tela-resultado">
-                <header class="resultado-header">
-                    <h2>Resultado do sorteio</h2>
-                    <p>1º resultado</p>
-                </header>
+        <button id="btn-sortear-novamente" class="botao-principal secundario" type="button">
+          <span>Sortear novamente</span>
+          <span class="icone-reload">⟲</span>
+        </button>
 
-                <div class="resultado-numeros" id="resultado-numeros">
-                    
-                </div>
+        <button id="btn-voltar" class="botao-voltar" type="button">
+          Voltar para o início
+        </button>
+      </section>
+    </main>
+  </div>
 
-                <button type="button" id="btn-sortear-novamente">
-                    Sortear novamente
-                </button>
-            </section>
-
-        </main>
-    </div>
-
-   
-    <script src="scripts.js"></script>
+  <script src="scripts.js"></script>
 </body>
-
 </html>
